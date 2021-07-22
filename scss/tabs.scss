@@ -1,0 +1,164 @@
+@import "https://fonts.googleapis.com/css?family=Montserrat:400,700|Raleway:300,400";
+
+
+.tabs {
+    color: #333;
+  left: 50%;
+  transform: translateX(-50%);
+  position: relative;
+  background: rgb(88,189,146);
+  background: linear-gradient(90deg, rgba(88,189,146,1) 0%, rgba(104,195,180,1) 45%, rgba(77,187,197,1) 100%);
+  padding: 50px;
+  padding-bottom: 20px;
+  margin: 50px 0px 0px 0px;
+  width: 70%;
+  height: 40vh;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  border-radius: 5px;
+  min-width: 240px;
+  @media (max-width: 1060px){
+      padding: 20px;
+  }
+
+  .content section h2,
+  ul li label {
+    font-family: "Montserrat";
+    font-weight: bold;
+    font-size: 18px;
+    color: #2F6EA1;
+    cursor: pointer;
+
+    @media (max-width: 1060px){
+        font-size: 14px;
+    }
+  }
+  ul {
+    list-style-type: none;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 100%;
+    li {
+      box-sizing: border-box;
+      flex: 0 1 25%;
+      width: calc(100%/4);
+    
+    }
+  }
+  .slider {
+    position: relative;
+    width: 50px;
+    max-width: calc(100%/4);
+    height: 4px;
+    background: #428BFF;
+    -webkit-transition: all 0.33s cubic-bezier(0.38, 0.8, 0.32, 1.07);
+    transition: all 0.33s cubic-bezier(0.38, 0.8, 0.32, 1.07);
+    border-radius: 1px;
+  }
+  .content {
+    margin-top: 50px;
+    section {
+      display: none;
+      -webkit-animation-name: content;
+      animation-name: content;
+      -webkit-animation-direction: normal;
+      animation-direction: normal;
+      -webkit-animation-duration: 0.3s;
+      animation-duration: 0.3s;
+      -webkit-animation-timing-function: ease-in-out;
+      animation-timing-function: ease-in-out;
+      -webkit-animation-iteration-count: 1;
+      animation-iteration-count: 1;
+      line-height: 1.4;
+      text-align: left;
+      text-transform: none;
+      span{
+        margin-top: 15px;
+        display: block;
+      }
+    }
+  }
+  input[name="tab-control"] {
+    display: none;
+    @for $i from 1 through 4 {
+      &:nth-of-type(#{$i}):checked {
+        ~ ul {
+          > li:nth-child(#{$i}) {
+            > label {
+              cursor: default;
+              color: #428BFF;
+            }
+            @media (max-width: 600px) {
+              > label {
+                background: rgba(0, 0, 0, 0.08);
+              }
+            }
+          }
+        }
+        ~ .slider {
+          left: calc(((#{$i} - 1) * 200% + 100%) / (2 * 4) - 50px / 2);
+        }
+        ~ .content {
+          > section:nth-child(#{$i}) {
+            display: block;
+          }
+        }
+      }
+    }
+  }
+  @-webkit-keyframes content {
+    from {
+      opacity: 0;
+      -webkit-transform: translateY(5%);
+      transform: translateY(5%);
+    }
+    to {
+      opacity: 1;
+      -webkit-transform: translateY(0%);
+      transform: translateY(0%);
+    }
+  }
+  @keyframes content {
+    from {
+      opacity: 0;
+      -webkit-transform: translateY(5%);
+      transform: translateY(5%);
+    }
+    to {
+      opacity: 1;
+      -webkit-transform: translateY(0%);
+      transform: translateY(0%);
+    }
+  }
+  @media (max-width: 1000px) {
+    ul li label {
+      white-space: initial;
+      br {
+        display: initial;
+      }
+      svg {
+        height: 1.5em;
+      }
+    }
+  }
+  @media (max-width: 600px) {
+    ul li label {
+      padding: 5px;
+      border-radius: 5px;
+      span {
+        display: none;
+      }
+    }
+    .slider {
+      display: none;
+    }
+    .content {
+      margin-top: 20px;
+      section {
+        h2 {
+          display: block;
+        }
+      }
+    }
+  }
+}
