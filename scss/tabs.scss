@@ -45,7 +45,7 @@
     
     }
   }
-  .slider {
+  .slider-tabs {
     position: relative;
     width: 50px;
     max-width: calc(100%/4);
@@ -95,7 +95,7 @@
             }
           }
         }
-        ~ .slider {
+        ~ .slider-tabs {
           left: calc(((#{$i} - 1) * 200% + 100%) / (2 * 4) - 50px / 2);
         }
         ~ .content {
@@ -149,7 +149,7 @@
         display: none;
       }
     }
-    .slider {
+    .slider-tabs {
       display: none;
     }
     .content {
